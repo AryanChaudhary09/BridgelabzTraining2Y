@@ -1,0 +1,27 @@
+ALGORITHM CheckPrime
+    INPUT: Positive integer N greater than 1
+    OUTPUT: "Prime" or "Not Prime"
+
+    IF N = 2 THEN
+        OUTPUT "Prime"
+        STOP
+    END IF
+
+    IF N MOD 2 = 0 THEN
+        OUTPUT "Not Prime"
+        STOP
+    END IF
+
+    divisor ← 3
+
+    WHILE divisor × divisor ≤ N DO
+        IF N MOD divisor = 0 THEN
+            OUTPUT "Not Prime"
+            STOP
+        END IF
+
+        divisor ← divisor + 2
+    END WHILE
+
+    OUTPUT "Prime"
+END ALGORITHM

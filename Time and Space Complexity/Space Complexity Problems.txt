@@ -1,0 +1,82 @@
+Space Complexity Problems
+============================
+
+Problem SC-1: Linear Search Space Complexity
+--------------------------------------------
+Sample Input Array: {8, 61, 2, 3, 4, 0}
+
+1. Auxiliary Space Complexity of Iterative Linear Search
+
+   Answer: O(1)  (constant auxiliary space)
+
+   Reasoning:
+   - Iterative Linear Search uses a fixed number of extra variables regardless of input size n.
+   - Typical variables: index i, target value, and possibly a flag or return value.
+   - These occupy constant memory: a few machine words.
+   - No additional arrays, recursion stack, or dynamic memory is allocated.
+   - Therefore, auxiliary (extra) space does not grow with n.
+
+   Final: Auxiliary Space Complexity = O(1)
+
+
+Problem SC-2: Binary Search Space Complexity
+--------------------------------------------
+Sample Sorted Array: {0, 2, 3, 4, 8, 61}
+
+1. Auxiliary Space Complexity for Iterative Binary Search
+
+   Answer: O(1)  (constant auxiliary space)
+
+   Explanation:
+   - Iterative Binary Search maintains only a few index variables: low, high, mid.
+   - These are a constant number of scalar variables.
+   - No recursion is used, so there is no call-stack overhead.
+   - No extra arrays or dynamic memory are allocated.
+   - Hence, extra memory usage is independent of input size n.
+
+   Final: Auxiliary Space Complexity = O(1)
+
+
+Problem SC-3: Merge Sort Space Complexity
+-----------------------------------------
+Sample Input Array: {8, 61, 2, 3, 4, 0}
+
+1. Why merging requires extra memory and auxiliary space complexity
+
+   Reason for extra memory:
+   - During the merge step, two sorted subarrays must be combined into a single sorted sequence.
+   - To avoid overwriting elements that have not yet been processed, a temporary buffer (auxiliary array) is used.
+   - This buffer must be able to hold up to n elements (the size of the current segment being merged).
+   - Additionally, recursive calls use stack frames; for a balanced recursion tree, the maximum depth is O(log n).
+
+   Auxiliary Space Breakdown:
+   - Temporary merge buffer: O(n)
+   - Recursion stack (top-down implementation): O(log n)
+   - Dominant term: O(n)
+
+   Final: Auxiliary Space Complexity = O(n)
+
+2. Comparison with in-place sorting algorithms (Insertion Sort, Quick Sort)
+
+   Merge Sort:
+   - Auxiliary space: O(n)
+   - Not in-place: requires extra linear memory for merging.
+   - Advantage: stable sort, guaranteed O(n log n) time.
+
+   Insertion Sort:
+   - Auxiliary space: O(1)
+   - In-place: sorts using only a constant amount of extra memory.
+   - Disadvantage: O(n^2) time in worst/average case.
+
+   Quick Sort (typical in-place version):
+   - Auxiliary space: O(log n) on average (recursion stack), O(n) worst case (unbalanced partitions).
+   - In-place: does not require a separate merge buffer.
+   - Advantage: O(n log n) average time, better space efficiency than Merge Sort.
+   - Disadvantage: not stable by default; worst-case O(n^2) time without careful pivot selection.
+
+   Space Efficiency Ranking (best to worst auxiliary space):
+   - Insertion Sort: O(1)
+   - Quick Sort (average): O(log n)
+   - Merge Sort: O(n)
+
+   Thus, Merge Sort is less space-efficient than in-place algorithms like Insertion Sort and typical Quick Sort, but it trades this for stability and guaranteed O(n log n) time.
